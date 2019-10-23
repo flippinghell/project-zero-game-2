@@ -18,13 +18,12 @@ public class EnemyBehaviour : MonoBehaviour
         a = time;
     }
 
-    void OnTriggerEnter2D()
+    void OnCollisionEnter2D()
     {
         Debug.Log("target hit!");
 
         a = 0;
 
-        print(player.transform.position);
     }
 
     // Update is called once per frame
