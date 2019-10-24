@@ -8,9 +8,10 @@ public class EnemyMovement : MonoBehaviour
     private Transform self;
     public GameObject player;
     private Rigidbody2D physics;
-    public float force = 10f;
-    
-    
+    public float force = 40f;
+    public bool VectorPrint = false;
+    public Vector2 DirectionVector;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +26,13 @@ public class EnemyMovement : MonoBehaviour
         float x = target.position.x - self.position.x;
         float y = target.position.y - self.position.y;
 
+        // The unit vector in the direction from the enemy to the player
+        DirectionVector = new Vector2(x, y) / Mathf.Sqrt(x * x + y * y);
 
-        physics.AddForce(new Vector2(x, y) / Mathf.Sqrt(x*x + y*y) * force);
+        physics.AddForce(DirectionVector * force);
 
-        print("my force vector to target is (" + x + ", " + y + ").");
+        if(VectorPrint)
+            print("my direction vector to target is (" + x + ", " + y + ").");
         
     }
 }
