@@ -9,6 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float speed = 15f;
     public int time = 8;
     private int a;
+    public bool EnemyContact = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,8 @@ public class EnemyBehaviour : MonoBehaviour
         Debug.Log("target hit!");
 
         a = 0;
-
-        print(player.transform.position);
+        EnemyContact = true;
+        
     }
 
     // Update is called once per frame
@@ -33,8 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (a < time)
         {
             a++;
-            player.transform.Translate(new Vector3(movement.DirectionVector.x, movement.DirectionVector.y, 0) * speed * Time.deltaTime);
-            print(player.transform.position);
+            
         }
 
     }
