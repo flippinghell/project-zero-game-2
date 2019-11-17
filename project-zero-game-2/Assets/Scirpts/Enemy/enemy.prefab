@@ -160,3 +160,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2195063266435728369, guid: 08b82e8b796fb474f9fe9b37f34d300a, type: 3}
+  EnemyHealth: 2
+  fist: {fileID: 5994233666875718095, guid: 8b2cfa33274b6574d80258dcd9cfb36a, type: 3}
