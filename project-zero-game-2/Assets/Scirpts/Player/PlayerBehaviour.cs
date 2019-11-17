@@ -11,14 +11,17 @@ public class PlayerBehaviour : MonoBehaviour
     private GameObject player;
     private PlayerMovement3 PlayerMovement;
     private MouseOrientate MouseOrientate;
+    private Punching Punching;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Punching = GetComponentInParent<Punching>();
         PlayerMovement = GetComponentInParent<PlayerMovement3>();
         MouseOrientate = GetComponentInParent<MouseOrientate>();
         enemybehaviour = enemy.GetComponent<EnemyBehaviour>();
+
     }
 
     // Update is called once per frame
@@ -44,6 +47,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         PlayerMovement.enabled = false;
         MouseOrientate.enabled = false;
+        Punching.enabled = false;
     }
 
 }

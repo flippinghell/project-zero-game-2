@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2258406355722004250}
   m_Layer: 0
   m_Name: FistRprefab
-  m_TagString: Untagged
+  m_TagString: fist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
