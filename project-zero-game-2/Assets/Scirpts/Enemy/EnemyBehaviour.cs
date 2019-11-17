@@ -6,37 +6,34 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public GameObject player;
     private EnemyMovement movement;
-    public float speed = 15f;
-    public int time = 8;
-    private int a;
-    public bool EnemyContact = false;
+    private PlayerBehaviour PlayerBehaviour;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         // accessing the enemy's own movement script to get the contact force direction
         movement = GetComponent<EnemyMovement>();
-        a = time;
+        PlayerBehaviour = player.GetComponent<PlayerBehaviour>();
+        
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D (Collider2D other)
     {
-        Debug.Log("target hit!");
+        if (other.gameObject == player)
+        {
+            
+            PlayerBehaviour.TakeDamage();
+        }
 
-        a = 0;
-        EnemyContact = true;
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (a < time)
-        {
-            a++;
-            
-        }
-
+        
     }
 
     

@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public int PlayerHealth;
-    public bool PlayerContact = false;
+    public int PlayerHealth = 5;
+    
     private EnemyBehaviour enemybehaviour;
     public GameObject enemy;
+    private GameObject player;
+    private PlayerMovement3 PlayerMovement;
+    private MouseOrientate MouseOrientate;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerHealth = 5;
+        PlayerMovement = GetComponentInParent<PlayerMovement3>();
+        MouseOrientate = GetComponentInParent<MouseOrientate>();
         enemybehaviour = enemy.GetComponent<EnemyBehaviour>();
     }
 
@@ -20,20 +25,25 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         print(PlayerHealth);
-
-        if (PlayerContact
-            && enemybehaviour.EnemyContact)
-        {
-            PlayerHealth--;
-            PlayerContact = false;
-            enemybehaviour.EnemyContact = false;
-        }
+        
+        
+        
 
             
     }
 
-    void OnTriggerEnter2D()
+    public void TakeDamage()
     {
-        PlayerContact = true;
+        PlayerHealth--;
+
+        if (PlayerHealth <= 0)
+            Dead();
     }
+
+    void Dead()
+    {
+        PlayerMovement.enabled = false;
+        MouseOrientate.enabled = false;
+    }
+
 }
