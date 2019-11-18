@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public GameObject player;
+    private GameObject playerHitBox;
     private EnemyMovement movement;
     public float speed = 15f;
     public int time = 8;
@@ -15,14 +16,32 @@ public class EnemyBehaviour : MonoBehaviour
     {
         // accessing the enemy's own movement script to get the contact force direction
         movement = GetComponent<EnemyMovement>();
+<<<<<<< Updated upstream
         a = time;
+=======
+        PlayerBehaviour = player.GetComponent<PlayerBehaviour>();
+
+        Transform playerHurtboxTransform = player.transform.Find("playerhurtbox");
+        this.playerHitBox = playerHurtboxTransform.gameObject;
+>>>>>>> Stashed changes
     }
 
     void OnTriggerEnter2D()
     {
+<<<<<<< Updated upstream
         Debug.Log("target hit!");
 
         a = 0;
+=======
+        if(this.playerHitBox == null)
+        {
+        }
+        if (other.gameObject == this.playerHitBox)
+        {
+            
+            PlayerBehaviour.TakeDamage();
+        }
+>>>>>>> Stashed changes
 
         print(player.transform.position);
     }

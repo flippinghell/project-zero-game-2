@@ -1,0 +1,52 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerBehaviour : MonoBehaviour
+{
+    public int PlayerHealth
+    {
+        get; set;
+    } = 5;
+    
+    private EnemyBehaviour enemybehaviour;
+    public GameObject enemy;
+    private GameObject player;
+    private PlayerMovement3 PlayerMovement;
+    private MouseOrientate MouseOrientate;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        PlayerMovement = GetComponentInParent<PlayerMovement3>();
+        MouseOrientate = GetComponentInParent<MouseOrientate>();
+        enemybehaviour = enemy.GetComponent<EnemyBehaviour>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    
+        
+        
+        
+
+            
+    }
+
+    public void TakeDamage()
+    {
+        PlayerHealth--;
+
+        if (PlayerHealth <= 0)
+            Dead();
+    }
+
+    void Dead()
+    {
+        PlayerMovement.enabled = false;
+        MouseOrientate.enabled = false;
+    }
+
+}
